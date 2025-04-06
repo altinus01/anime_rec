@@ -8,7 +8,7 @@ def full_data_updater(data_url:str, rating_filter:float=7.5):
         print(u"\u2713 Full data imported!")
     except:
         print(u"\u2717 ERROR: Couldn't import full data! Check URL")
-    data.drop(columns=['Synopsis','Rated by(number of users)', 'Rank', 'Popularity',
+    data.drop(columns=['Image source','Synopsis','Rated by(number of users)', 'Rank', 'Popularity',
        'Number of episodes', 'Duration', 'Status', 'Aired', 'Producers',
        'Studio(s)','Demographic','Anime recomendations(by users and autorec)','Theme','English Name'],inplace=True, errors='ignore')
     data.dropna(inplace=True)
@@ -35,10 +35,3 @@ def preprocess_data(data_url:str):
     filtered_data_encoded.drop('Genres',axis=1,inplace=True)
     filtered_data_encoded.to_csv('data/ohe_data.csv',index=False)
     print(u"\u2713 Data preprocessed!")
-
-filtered_data_url="data/filtered_anime_dataset.csv"
-full_data_url="data/anime_dataset.csv"
-
-
-full_data_updater(full_data_url, rating_filter=7.5)
-preprocess_data(filtered_data_url)
