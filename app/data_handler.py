@@ -29,8 +29,8 @@ def preprocess_data(data_url:str):
     except:
         print(u"\u2717 ERROR: Couldn't import filtered data! Check URL")
     data['Genres']=data['Genres'].apply(lambda x: ast.literal_eval(x) if isinstance(x,str) else x)
-    mlb = MultiLabelBinarizer()
-    genre_encoded = pd.DataFrame(mlb.fit_transform(data['Genres']),columns=mlb.classes_)
+    mlb = MultiLabelBinarizer(sparse_output=False)   # ✅ force dense ndarray
+    genre_encoded = pd.DataFrame(mlb.fit_transform(data['Genres']),columns=mlb.classes_,index=data.index)
     filtered_data_encoded=pd.concat([data,genre_encoded],axis=1)
     filtered_data_encoded.drop('Genres',axis=1,inplace=True)
     filtered_data_encoded.to_csv('data/ohe_data.csv',index=False)
