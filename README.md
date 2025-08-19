@@ -42,7 +42,8 @@ Highlighted recommendation table with ratings and release years
 
 ☁️ Deployment
 The app is also hosted on Streamlit Cloud.
-👉 (add your deployment link once it’s live)
+
+https://animerec-altinus.streamlit.app/
 
 
 📜 License
@@ -51,6 +52,7 @@ Artwork is AI-generated for safe use in this project.
 Project created for educational and demonstration purposes.
 
 ✨ Made by altinus01
+
 
 
 
